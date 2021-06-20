@@ -9,6 +9,26 @@
 2. run docker-compose up --build on root dir
 3. wait for all services to run
 
+## example env
+
+create a .env file and copy the contents update email and smtp if required
+
+```env
+
+NODE_ENV=production
+AMQP_HOST=rabbitmq
+QUEUE_NAME=newsletter
+USER_NAME=root
+PASSWORD=pass
+HOST=mysql
+PARKING_LOT_QUEUE=parkingLotQueue
+SMTP_HOST=smtp.ethereal.email
+SMTP_PORT=587
+EMAIL=adrain.murphy@ethereal.email
+EMAIL_PASSWORD=sTDA7eJrqXD2jPnmwR
+
+```
+
 # Run without Docker
 
 1. copy .env to both api and emailPublisher
@@ -39,26 +59,6 @@
             "csv_file": file
         }
     ```
-
-## example env
-
-create a .env file and copy the contents update email and smtp if required
-
-```env
-
-NODE_ENV=production
-AMQP_HOST=rabbitmq
-QUEUE_NAME=newsletter
-USER_NAME=root
-PASSWORD=pass
-HOST=mysql
-PARKING_LOT_QUEUE=parkingLotQueue
-SMTP_HOST=smtp.ethereal.email
-SMTP_PORT=587
-EMAIL=adrain.murphy@ethereal.email
-EMAIL_PASSWORD=sTDA7eJrqXD2jPnmwR
-
-```
 
 ## notes
 
