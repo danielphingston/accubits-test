@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "resolveJsonModule": true,
+        "lib": ["es2020"],
+        "typeRoots": ["../node_modules/@types"]
+    },
+    "exclude": ["node_modules", "**/node_modules/*"],
+    "typeAcquisition": {
+        "exclude": ["dotenv"]
+    }
+}

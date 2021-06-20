@@ -1,0 +1,23 @@
+{
+    "name": "api",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "nodemon ./bin/www",
+        "start-prod": "npx sequelize-cli db:create --env production &&  node ./bin/www"
+    },
+    "dependencies": {
+        "amqplib": "^0.8.0",
+        "cookie-parser": "~1.4.4",
+        "csv-parse": "^4.16.0",
+        "dotenv": "^10.0.0",
+        "express": "~4.16.1",
+        "morgan": "~1.9.1",
+        "multer": "^1.4.2",
+        "mysql2": "^2.2.5",
+        "sequelize": "^6.6.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    }
+}

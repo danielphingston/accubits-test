@@ -1,0 +1,57 @@
+version: "3.8"
+services:
+    mysql:
+        image: mysql
+        container_name: mysql
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: pass
+        ports:
+            - 3306:3306
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            timeout: 5s
+            retries: 10
+        # volumes:
+        #     - my-datavolume:/var/lib/mysql
+    rabbitmq:
+        image: rabbitmq:3-management
+        container_name: rabbitmq
+        restart: unless-stopped
+        healthcheck:
+            test: ["CMD", "rabbitmqctl", "status"]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+    api:
+        build: api
+        container_name: api
+        restart: unless-stopped
+        env_file:
+            - .env
+        ports:
+            - 3000:3000
+        depends_on:
+            mysql:
+                condition: service_healthy
+            rabbitmq:
+                condition: service_healthy
+        healthcheck:
+            test: ["CMD", "node", "healthCheck.js"]
+            interval: 5s
+            timeout: 2s
+            start_period: 3s
+            retries: 5
+
+    email:
+        build: emailPublisher
+        container_name: email
+        env_file:
+            - .env
+        depends_on:
+            mysql:
+                condition: service_healthy
+            rabbitmq:
+                condition: service_healthy
+            api:
+                condition: service_healthy
