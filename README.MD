@@ -9,6 +9,12 @@
 2. run docker-compose up --build on root dir
 3. wait for all services to run
 
+# Run without Docker
+
+1. copy .env to both api and emailPublisher
+2. update env as required with mysql and rabbitmq config as well as email config
+3. run with npm run start-prod (start api server 1st)
+
 #APIS
 
 -   [POST] /users - add new user
@@ -36,7 +42,7 @@
 
 ## example env
 
-create a .env file and copy the contents
+create a .env file and copy the contents update email and smtp if required
 
 ```env
 
@@ -59,3 +65,4 @@ EMAIL_PASSWORD=sTDA7eJrqXD2jPnmwR
 -   DB exposed on 3306
 -   API exposed on 3000
 -   https://ethereal.email/ for testing email
+-   if https://ethereal.email/ then message will not actually be sent by can be viewed on the messages tab https://ethereal.email/messages
