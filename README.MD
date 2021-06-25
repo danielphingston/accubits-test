@@ -56,7 +56,7 @@ EMAIL_PASSWORD=sTDA7eJrqXD2jPnmwR
     ```JSON
         Upload as Form-data
         {
-            "csv_file": file
+            "csv_file": "file"
         }
     ```
 
